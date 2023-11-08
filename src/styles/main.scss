@@ -1,0 +1,340 @@
+@import "./variable.scss";
+
+/************************************************************************
+
+	D E F A U L T S
+
+************************************************************************/
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: $bg-colour;
+}
+
+/************************************************************************
+
+	S P I N N E R
+
+************************************************************************/
+.loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+/************************************************************************
+
+	H E A D E R
+
+************************************************************************/
+.header-container {
+    display: flex;
+    align-items: center;
+
+    h1 {
+        flex: 2;
+
+        a {
+            color: $black-colour;
+            text-decoration: none;
+        }
+    }
+
+    .search-box {
+        height: 40px;
+    }
+    @media (max-width: $breakpoint-landscape) {
+        .search-box {
+            width: 200px;
+        }
+    }
+
+}
+
+.crypto-lists-container {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+@media (max-width: $breakpoint-landscape) {
+    .crypto-lists-container {
+        padding: 0;
+    }
+}
+
+.page-breadcrumbs {
+    padding-bottom: $padding-unit * 6;
+    
+}
+/************************************************************************
+
+	T A B L E
+
+************************************************************************/
+.crypto-table-continer {
+    background: $white-colour;
+    padding: $padding-unit * 4;
+
+    .crypto-table {
+        &-head {
+            border-bottom: 2px solid $grey-colour-05;
+            background-color: $grey-colour-01;
+
+            .crypto-table-row {
+                th {
+                    padding: ($padding-unit * 4) $padding-unit ($padding-unit * 4) ($padding-unit * 2);
+
+                    .sort-icon {
+                        vertical-align: middle;
+                        width: 20px;
+                        float: right;
+                        color: $grey-colour-04;
+                    }
+
+                    &:first-child {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
+        &-body {
+            .crypto-table-row {
+                border-bottom: 1px dashed $grey-colour-03;
+
+                &:nth-child(odd) {
+                    background-color: $grey-colour-00;
+                }
+
+                td {
+                    padding: ($padding-unit * 4) $padding-unit ($padding-unit * 4) ($padding-unit * 2);
+
+                    &:first-child {
+                        text-align: center;
+                    }
+                }
+
+                .coin-title {
+                    display: flex;
+                    align-items: center;
+
+                    h5 {
+                        padding-left: $padding-unit * 2;
+                        margin: 0;
+
+                        span {
+                            display: block;
+                            width: 100%;
+                            color: $grey-colour-03;
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+                .action-icon {
+                    text-align: center;
+                    a {
+                        color: #03a9f4;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: $breakpoint-landscape) {
+        .crypto-table {
+            table-layout: fixed;
+            overflow-wrap: break-word;
+
+            &-head {
+                .crypto-table-row {
+                    th {
+                        padding: ($padding-unit * 4) $padding-unit ($padding-unit * 4) $padding-unit;
+                        &:first-child {
+                            width: 28px;
+                        }
+                        &:last-child {
+                            width: 45px;
+                        }
+                    }
+                }
+            } 
+            
+            &-body {
+                .crypto-table-row {
+                    td {
+                        padding: ($padding-unit * 4) $padding-unit ($padding-unit * 4) $padding-unit;
+                        font-size: $font-size * 3;
+                    }
+                    .action-icon {
+                        a svg {
+                            width: 18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.table-pagination {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: $padding-unit * 6 0 $padding-unit * 8;
+    .prev-button, .next-button {
+        flex: 2;
+    }
+    .next-button button {
+        float: right;
+    }
+}
+
+/************************************************************************
+
+	D E T A I L S    P A G E
+
+************************************************************************/
+
+.crypto-detail-page {
+    padding: $padding-unit * 4;
+    .crypto-title {
+        padding: $padding-unit * 4 $padding-unit * 6;
+        display: flex;
+        margin-bottom: $padding-unit * 8;
+        .current-price {
+            h2 { margin: 0; }
+        }
+    }
+    .header-title {
+        display: flex;
+        flex: 2;
+        align-items: center;
+
+        &-text {
+            padding-left: $padding-unit * 3;
+        }
+
+        h3 {
+            margin: 0;
+
+            span {
+                font-size: $font-size * 4;
+                color: $grey-colour-04;
+                padding-left: $padding-unit * 2;
+            }
+        }
+
+        .rank-tag {
+            color: $white-colour;
+            background-color: $grey-colour-06;
+            border-radius: 5px;
+            font-size: $font-size + 6;
+            padding: $padding-unit ($padding-unit * 3);
+        }
+    }
+
+
+
+    .price-range-slider {
+        width: 40%;
+        margin-bottom: $padding-unit * 8;
+
+        .price-progress {
+            height: 10px;
+            border-radius: 12px;
+        }
+
+        .price-low-high {
+            display: flex;
+
+            div:first-child {
+                flex: 2;
+            }
+        }
+    }
+
+    .crypto-overview {
+        padding: ($padding-unit * 4) ($padding-unit * 8);
+
+        .additional-info-tab {
+            background: $grey-colour-02;
+            border: 1px solid $grey-colour-03;
+
+            button {
+                font-weight: bolder;
+            }
+        }
+    }
+}
+
+/************************************************************************
+
+	T A B 
+
+************************************************************************/
+
+.overview-container {
+    display: flex;
+
+    .overview-lists {
+        flex: 1;
+
+        .list-items {
+            border-bottom: 1px solid $grey-colour-03;
+            padding: $padding-unit * 4;
+            background-color: $grey-colour-01;
+            margin-bottom: $padding-unit * 2;
+            margin-right: $padding-unit * 2;
+            
+            span.price {
+                float: right;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-landscape) {
+    .overview-container {
+        display: block;
+    }
+}
+
+.statitics-container {
+    .statistics-data-lists {
+        display: flex;
+        .stats-data {
+            flex: 1;
+            
+            .list-items {
+                border-bottom: 1px solid $grey-colour-03;
+                padding: $padding-unit * 4;
+                margin-right: $padding-unit * 2;
+                background-color: $grey-colour-01;
+                span.price {
+                    float: right;
+                    font-weight: bold;
+                }
+            }
+
+            .larger-items {
+                height: 40px;
+                small {
+                    display: block;
+                    font-weight: normal;
+                    font-size: smaller;
+                }
+            }
+        }
+    }
+
+    @media (max-width: $breakpoint-landscape) {
+        .statistics-data-lists {
+            display: block;
+            .stats-data {
+                margin-bottom: $padding-unit * 8;
+            }
+        }
+    }
+}

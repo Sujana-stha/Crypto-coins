@@ -1,0 +1,28 @@
+
+$grey-colour-00: #fafafc;
+$grey-colour-01: #f2f2f2;
+$grey-colour-02: #e5e5e5;
+$grey-colour-03: #cccccc;
+$grey-colour-04: #979797;
+$grey-colour-05: #6e6e6e;
+$grey-colour-06: #333333;
+
+$bg-colour: #f3f6f9;
+
+$white-colour: #FFFFFF;
+
+$black-colour: #000000;
+$black-colour-light1: lighten($black-colour, 40%);
+$black-colour-light2: lighten($black-colour, 50%);
+$black-colour-light3: lighten($black-colour, 60%);
+$black-colour-light4: lighten($black-colour, 70%);
+
+$padding-unit: 4px;
+$font-size: 4px;
+
+
+
+$breakpoint-desktop: 1200px;
+$breakpoint-landscape: 992px;
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 576px;
