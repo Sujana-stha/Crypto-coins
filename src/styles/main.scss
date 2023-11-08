@@ -45,8 +45,19 @@ body {
         height: 40px;
     }
     @media (max-width: $breakpoint-landscape) {
+        h1 {
+            font-size: $font-size * 5;
+        }
         .search-box {
             width: 200px;
+        }
+    }
+    @media (max-width: $breakpoint-tablet) {
+        h1 {
+            font-size: $font-size * 5;
+        }
+        .search-box {
+            width: 150px;
         }
     }
 
@@ -143,8 +154,8 @@ body {
 
     @media (max-width: $breakpoint-landscape) {
         .crypto-table {
-            table-layout: fixed;
-            overflow-wrap: break-word;
+            display: block;
+            overflow: scroll;
 
             &-head {
                 .crypto-table-row {
@@ -268,6 +279,33 @@ body {
     }
 }
 
+@media (max-width: $breakpoint-mobile) {
+    .crypto-detail-page {
+        padding: 0;
+        .crypto-title {
+            padding: ($padding-unit * 6) $padding-unit;
+            .current-price {
+                h2 {
+                    font-size: $font-size * 4;
+                }
+            }
+        }
+        .header-title {
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .crypto-overview {
+            padding: $padding-unit * 4;
+            .price-range-slider {
+                width: 100%;
+            }
+        }
+    }
+}
+
 /************************************************************************
 
 	T A B 
@@ -291,6 +329,11 @@ body {
                 float: right;
                 font-weight: bold;
             }
+            @media (max-width: $breakpoint-mobile) {
+                span {
+                    font-size: $font-size * 3;
+                }
+            }
         }
     }
 }
@@ -298,8 +341,16 @@ body {
 @media (max-width: $breakpoint-landscape) {
     .overview-container {
         display: block;
+        .overview-lists {
+            .list-items {
+                margin-right: 0;
+                
+            }
+        }
     }
 }
+
+
 
 .statitics-container {
     .statistics-data-lists {
@@ -315,6 +366,11 @@ body {
                 span.price {
                     float: right;
                     font-weight: bold;
+                }
+                @media (max-width: $breakpoint-mobile) {
+                    span {
+                        font-size: $font-size * 3;
+                    }
                 }
             }
 

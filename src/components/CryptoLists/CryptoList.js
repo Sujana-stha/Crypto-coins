@@ -43,7 +43,7 @@ function CryptoLists() {
 		const query =  e.target.value
 		setSearchQuery(query);
 	
-		if(query.length === 3) {
+		if(query.length >= 3) {
 			const searchQuery = query.toLowerCase();
 			const filtered = cryptoData.data.filter(crypto => crypto.name.toLowerCase().includes(searchQuery) || crypto.symbol.toLowerCase().includes(searchQuery));
 			setFilteredData(filtered);
