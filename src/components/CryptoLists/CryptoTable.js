@@ -1,10 +1,10 @@
 import React from 'react';
 import { Table, TableHead, TableBody, TableRow, TableCell } from '@mui/material';
-import { VisibilityOutlined, ArrowDropDown, ArrowDropUp  } from '@mui/icons-material'; 
+import { VisibilityOutlined, ArrowDropDown, ArrowDropUp, PushPin  } from '@mui/icons-material'; 
 import { Link } from 'react-router-dom';
 import { lightBlue } from '@mui/material/colors';
 
-const CryptoTable = ({ cryptoData, page, rowsPerPage, order,sortColumn, handleSorting }) => {
+const CryptoTable = ({ cryptoData, selectedCoin, page, rowsPerPage, order,sortColumn, handleSorting, handlePin }) => {
 	
 
 	const DropDownIcon = () => {
@@ -17,6 +17,13 @@ const CryptoTable = ({ cryptoData, page, rowsPerPage, order,sortColumn, handleSo
 		return (
 			<ArrowDropUp className='sort-icon'/>
 		)
+	}
+
+	const _selectedClassName = (id) => {
+		if (id) {
+			const _selected =  selectedCoin.find(coin => coin.id === id)
+			return _selected ? 'selected-pin' : 'unpin-coin'
+		}
 	}
 	
 	return (
@@ -51,7 +58,10 @@ const CryptoTable = ({ cryptoData, page, rowsPerPage, order,sortColumn, handleSo
 							<TableCell>{currency.format(crypto.total_volume)}</TableCell>
 							<TableCell>{currency.format(crypto.market_cap)}</TableCell>
 							<TableCell>{currency.format(crypto.fully_diluted_valuation)}</TableCell>
-							<TableCell className='action-icon'><Link to={`/crypto/${crypto.id}`}><VisibilityOutlined color={lightBlue[500]}/></Link></TableCell>
+							<TableCell className='action-icon'>
+								<Link to={`/crypto/${crypto.id}`}><VisibilityOutlined color={lightBlue[500]}/></Link>
+								<span className={_selectedClassName(crypto.id)} onClick={() => handlePin(crypto.id)}><PushPin color={lightBlue[500]}/></span>
+							</TableCell>
 						</TableRow>
 					))}
 				</TableBody>

@@ -78,6 +78,27 @@ body {
     padding-bottom: $padding-unit * 6;
     
 }
+
+.pinned-currencies {
+    display: flex;
+    align-items: center;
+    .pinned-selected-coin {
+        margin-right: $padding-unit * 2;
+        img {
+            padding-right: $padding-unit * 2;
+            
+        }
+        .change-percent {
+            padding-left: $padding-unit;
+            color: #008200
+        }
+    }
+
+}
+
+.selected-pin {
+    color: #03a9f4;
+}
 /************************************************************************
 
 	T A B L E

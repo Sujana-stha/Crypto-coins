@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { AppContext } from '../../contexts/AppContext';
 import CryptoTable from './CryptoTable';
-import { Breadcrumbs, Button, Container, Grid, TablePagination, Typography } from '@mui/material';
+import { Breadcrumbs, Button, Card, CardContent, Container, Grid, TablePagination, Typography } from '@mui/material';
 import Spinner from '../Spinner';
 
 import Header from '../Header';
@@ -18,6 +18,7 @@ function CryptoLists() {
 	const [order, setOrder] =  useState("asc");
 	const [sortColumn, setSortColumn] =  useState("name");
 	const [apiPage, setApiPage] = useState();
+	const [selectedCoin, setSelectedCoin] = useState([]);
 
 	useEffect(() => {
 		if (cryptoData) {
@@ -53,6 +54,16 @@ function CryptoLists() {
 		
 	};
 
+	const handlePinnedCurrency = (id) => {
+		if (id) {
+			const _cryptoCurrency =  cryptoData && cryptoData.data && cryptoData.data.find((crypto) => crypto.id === id)
+			if (_cryptoCurrency) {
+
+				setSelectedCoin([...selectedCoin, _cryptoCurrency]);
+			}
+		}
+	}
+
 	const handleSortByColumn = (column) => {
 		if(column) {
 			const _order =  order === "asc" ? "desc" : "asc";
@@ -78,7 +89,7 @@ function CryptoLists() {
 		const _nextPage = apiPage && apiPage + 1;
 
 		getCryptoData(_nextPage)
-		.then(response => {
+		.then(response => { 
             dispatch({ type: 'FETCH_SUCCESS', payload: response });
         })
         .catch(error => {
@@ -125,6 +136,22 @@ function CryptoLists() {
 					<Typography key="3" color="text.primary">Home</Typography>
 					<Typography key="3" color="text.primary">Currencies</Typography>
 				</Breadcrumbs>
+
+				<Grid item xs={3}>
+					<div className='pinned-currencies'>
+						{selectedCoin.map(coin =>
+							<Card variant="outlined" className='pinned-selected-coin'>
+								<CardContent>
+									<img width={20} height={20} src={coin.image} alt={coin.name}/>
+									<span>{coin.name}</span>
+									<span className='change-percent'>{coin.price_change_percentage_24h.toFixed(2)}%</span>
+								</CardContent>
+								
+							</Card> 
+							
+						)}
+					</div>
+				</Grid>
 				<Grid item xs={12}>
 					<CryptoTable cryptoData={filteredData} 
 						page={page}
@@ -132,8 +159,11 @@ function CryptoLists() {
 						order = {order}
 						handleSorting = {(column) => handleSortByColumn(column)}
 						sortColumn = {sortColumn}
+						handlePin = {(id) => handlePinnedCurrency(id)}
+						selectedCoin ={selectedCoin}
 					/>
 				</Grid>
+				
 				
 
 				<div className='table-pagination'>
